@@ -1,30 +1,17 @@
-function permutation(arr, n) {
-  // Set to check the count
-  // of non-repeating elements
-  let hash = new Set();
+const soal2 = (arr, n) => {
+  let i;
 
-  let maxEle = 0;
-
-  for (let i = 0; i < n; i++) {
-    // Insert all elements in the set
-    hash.add(arr[i]);
-
-    // Calculating the max element
-    maxEle = Math.max(maxEle, arr[i]);
+  for (i = 0; i < n; i++) {
+    let abs_value = Math.abs(arr[i]);
+    if (arr[abs_value - 1] > 0) arr[abs_value - 1] = -arr[abs_value - 1];
+    else console.log(`repeat ${abs_value}`);
   }
 
-  if (maxEle != n) return false;
+  for (i = 0; i < n; i++) {
+    if (arr[i] > 0) console.log(`missing number ${i + 1}`);
+  }
+};
 
-  // Check if set size is equal to n
-  if (hash.length == n) return true;
-
-  return false;
-}
-
-// Driver Code
-
-let arr = [1, 2, 3, 6, 5, 4, 7];
-// let n = arr.length;
-
-if (permutation(arr)) console.log("Yes");
-else console.log("No");
+arr = [1, 3, 4, 2, 5, 6, 3];
+n = arr.length;
+soal2(arr, n);
