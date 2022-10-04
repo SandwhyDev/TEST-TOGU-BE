@@ -1,14 +1,12 @@
 const Joi = require("joi");
 
+// EMPLOYEE VALIDATION
 const employeeCheck = Joi.object({
   firstname: Joi.string().min(3).max(25).required(),
   lastname: Joi.string().min(3).max(25).required(),
   email: Joi.string().email().trim().required(),
   position: Joi.string().required(),
-  phone: Joi.string()
-    .min(10)
-    .max(12)
-    .pattern(/^[0-9]+$/),
+  phone: Joi.string().min(10).max(12),
 });
 
 export const validateEmployeeDetails = async (object) => {
@@ -18,6 +16,7 @@ export const validateEmployeeDetails = async (object) => {
     throw new Error(error);
   }
 };
+// EMPLOYEE VALIDATION END
 
 // EMPLOYEE ADDRESS VALIDATION
 const employeeAddressCheck = Joi.object({

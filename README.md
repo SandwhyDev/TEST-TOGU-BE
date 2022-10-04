@@ -1,8 +1,7 @@
 # INSTALLASI
 
 ```git
-npm i
-npx prisma init
+copy semua code di file .env.sample ke .env
 npx prisma db push
 npm run dev
 ```
