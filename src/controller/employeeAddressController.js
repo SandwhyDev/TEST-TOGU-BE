@@ -117,7 +117,7 @@ employeeAddressController.put("/employeeAddress/update/:id", async (req, res) =>
         address: data.address,
         city: data.city,
         province: data.province,
-        zip_code: data.zip_code,
+        zip_code: parseInt(data.zip_code),
       },
     });
 
