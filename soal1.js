@@ -1,12 +1,12 @@
-const soal1 = (number) => {
-  let largest = number[0];
+const soal1 = (arr) => {
+  let largest = arr[0];
   let large;
-  for (let i = 1; i < number.length; ++i) {
-    if (number[i] > largest) {
+  for (let i = 1; i < arr.length; ++i) {
+    if (arr[i] > largest) {
       large = largest;
-      largest = number[i];
-    } else if (number[i] > large || typeof large === "-1") {
-      large = number[i];
+      largest = arr[i];
+    } else if (arr[i] > large || typeof large === "-1") {
+      large = arr[i];
     }
   }
   return large;
