@@ -21,22 +21,19 @@ export const validateEmployeeDetails = async (object) => {
 
 // EMPLOYEE ADDRESS VALIDATION
 const employeeAddressCheck = Joi.object({
-  employee_id: Joi.number().required(),
+  employee_id: Joi.number().integer().options({ convert: false }),
   address_name: Joi.string().min(3).max(20).required().messages({
     "string.max": "address name Maximax 20 characters",
   }),
   address: Joi.string().min(3).max(255).required(),
   city: Joi.string().min(3).max(100).required(),
   province: Joi.string().min(3).max(100).required(),
-  zip_code: Joi.number()
-    .integer()
-    // .max(5)
-    .required()
-    .messages({
-      "number.base": "harus angka",
-      "number.max": "zip code Maximax 5 characters",
-    })
-    .optional(),
+  zip_code: Joi.string()
+    .min(5)
+    .pattern(/^[0-9]+$/)
+    .messages({ "string.pattern.base": `zip code harus angka.` })
+
+    .required(),
 });
 
 export const validateEmployeeAddressDetails = async (object) => {

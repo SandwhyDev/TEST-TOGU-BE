@@ -1,5 +1,5 @@
 import express from "express";
-import validation, { validateEmployeeDetails } from "../libs/joi_validation";
+import { validateEmployeeDetails } from "../libs/joi_validation";
 import employeeModel from "../model/employeeModel";
 
 const employeeController = express.Router();
@@ -8,7 +8,7 @@ const employeeController = express.Router();
 employeeController.post("/employee/create", async (req, res) => {
   try {
     const data = await req.body;
-    const validationData = await validation(req.body);
+    const validationData = await validateEmployeeDetails(req.body);
 
     const findEmail = await employeeModel.findUnique({
       where: {
